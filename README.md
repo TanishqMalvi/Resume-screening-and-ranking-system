@@ -49,8 +49,7 @@ streamlit run app.py
 5. Download the ranked resumes as a CSV file.
 
 ## Project Information
-This project is developed as part of the AICTE Internship on AI: Transformative Learning with TechSaksham, a joint CSR initiative of Microsoft & SAP.
-
+"This project is developed as part of the AICTE Internship on Foundations of Artificial Intelligence, facilitated by Edunet Foundation, under the joint initiative with AICTE."
 ## License
 This project is licensed under the MIT License.
 
