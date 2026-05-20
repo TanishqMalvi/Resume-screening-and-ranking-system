@@ -28,6 +28,11 @@ def set_background():
             padding-top: 1.5rem;
             padding-bottom: 2rem;
         }}
+        .main .stTextArea label,
+        .main .stFileUploader label,
+        .main [data-testid="stMarkdownContainer"] p {{
+            color: #e2e8f0;
+        }}
         .hero-card {{
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(248, 250, 252, 0.95));
             border: 1px solid rgba(148, 163, 184, 0.28);
@@ -163,7 +168,7 @@ def rank_resumes(job_description, resumes):
 def generate_download_link(df):
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()
-    href = f'<a class="download-btn" href="data:file/csv;base64,{b64}" download="resume_ranking.csv">⬇ Download Ranked Resumes CSV</a>'
+    href = f'<a class="download-btn" aria-label="Download ranked resumes as CSV" href="data:file/csv;base64,{b64}" download="resume_ranking.csv">⬇ Download Ranked Resumes CSV</a>'
     return href
 
 # Set background
@@ -180,7 +185,11 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.sidebar.image(str(Path(__file__).resolve().parent / "microsoft-logo.png"), width=200)
+sidebar_logo = Path(__file__).resolve().parent / "microsoft-logo.png"
+if sidebar_logo.exists():
+    st.sidebar.image(str(sidebar_logo), width=200)
+else:
+    st.sidebar.markdown("**Microsoft**")
 st.sidebar.markdown("### Project Information")
 st.sidebar.info("This AI-powered tool screens resumes based on job descriptions using NLP and TF-IDF.")
 
