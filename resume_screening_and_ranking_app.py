@@ -13,13 +13,19 @@ def set_background():
     st.markdown(
         """
         <style>
+        :root {{
+            --bg-accent: rgba(59, 130, 246, 0.22);
+            --bg-start: rgba(9, 24, 48, 0.74);
+            --bg-end: rgba(17, 43, 77, 0.67);
+        }}
+
         html, body, [class*="css"]  {{
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
         }}
 
         .stApp {{
-            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.22), transparent 42%),
-                        linear-gradient(145deg, rgba(9, 24, 48, 0.74), rgba(17, 43, 77, 0.67));
+            background: radial-gradient(circle at top right, var(--bg-accent), transparent 42%),
+                        linear-gradient(145deg, var(--bg-start), var(--bg-end));
         }}
         .main .block-container {{
             max-width: 1050px;
@@ -183,7 +189,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Local logo expected in the same directory as this app file.
+# Local logo expected in app directory; if missing, sidebar shows a text fallback.
 sidebar_logo = Path(__file__).resolve().parent / "microsoft-logo.png"
 if sidebar_logo.exists():
     st.sidebar.image(str(sidebar_logo), width=200)
