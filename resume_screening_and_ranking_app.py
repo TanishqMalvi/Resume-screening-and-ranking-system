@@ -169,7 +169,7 @@ def generate_download_link(df):
     return href
 
 # Set background
-set_background("https://source.unsplash.com/1600x900/?technology,corporate,office")
+set_background("https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1600")
 
 # Main Streamlit app
 st.markdown(
@@ -182,7 +182,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.sidebar.image("https://source.unsplash.com/400x300/?office,teamwork", width=200)
+st.sidebar.image("/home/runner/work/Resume-screening-and-ranking-system/Resume-screening-and-ranking-system/microsoft-logo.png", width=200)
 st.sidebar.markdown("### Project Information")
 st.sidebar.info("This AI-powered tool screens resumes based on job descriptions using NLP and TF-IDF.")
 
