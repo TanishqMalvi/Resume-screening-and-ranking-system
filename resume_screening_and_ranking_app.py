@@ -8,8 +8,9 @@ import re
 from io import BytesIO
 from pathlib import Path
 
-SIDEBAR_LOGO_FILENAME = "microsoft-logo.png"
-SIDEBAR_LOGO_FALLBACK_TEXT = "Microsoft"
+# Optional partner/brand logo shown in sidebar (local file in app directory).
+SIDEBAR_BRAND_LOGO_FILENAME = "microsoft-logo.png"
+SIDEBAR_BRAND_FALLBACK_TEXT = "Project Partner"
 
 # Function to set background
 def set_background():
@@ -175,7 +176,7 @@ def rank_resumes(job_description, resumes):
 def generate_download_link(df):
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()
-    href = f'<a class="download-btn" aria-label="Download ranked resumes as CSV" href="data:file/csv;base64,{b64}" download="resume_ranking.csv">⬇ Download Ranked Resumes CSV</a>'
+    href = f'<a class="download-btn" aria-label="Download ranked resumes as CSV" href="data:file/csv;base64,{b64}" download="resume_ranking.csv">Download Ranked Resumes CSV</a>'
     return href
 
 # Set background
@@ -193,11 +194,16 @@ st.markdown(
 )
 
 # Local logo expected in app directory; if missing, sidebar shows a text fallback.
-sidebar_logo = Path(__file__).resolve().parent / SIDEBAR_LOGO_FILENAME
+sidebar_logo = Path(__file__).resolve().parent / SIDEBAR_BRAND_LOGO_FILENAME
 if sidebar_logo.exists():
-    st.sidebar.image(str(sidebar_logo), width=200)
+    with open(sidebar_logo, "rb") as logo_file:
+        logo_b64 = base64.b64encode(logo_file.read()).decode("utf-8")
+    st.sidebar.markdown(
+        f'<img src="data:image/png;base64,{logo_b64}" alt="Partner organization logo" style="max-width: 200px; width: 100%; height: auto;" />',
+        unsafe_allow_html=True
+    )
 else:
-    st.sidebar.markdown(f"**{SIDEBAR_LOGO_FALLBACK_TEXT}**")
+    st.sidebar.markdown(f"**{SIDEBAR_BRAND_FALLBACK_TEXT}**")
 st.sidebar.markdown("### Project Information")
 st.sidebar.info("This AI-powered tool screens resumes based on job descriptions using NLP and TF-IDF.")
 
