@@ -13,10 +13,8 @@ def set_background():
     st.markdown(
         """
         <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
         html, body, [class*="css"]  {{
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
         }}
 
         .stApp {{
@@ -185,6 +183,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# Local logo expected in the same directory as this app file.
 sidebar_logo = Path(__file__).resolve().parent / "microsoft-logo.png"
 if sidebar_logo.exists():
     st.sidebar.image(str(sidebar_logo), width=200)
@@ -202,7 +201,7 @@ st.markdown('<div class="section-title">Upload Resumes</div>', unsafe_allow_html
 uploaded_files = st.file_uploader("Upload PDF resumes", type=["pdf"], accept_multiple_files=True)
 
 if uploaded_files and job_description:
-    st.markdown('<div class="section-title">Ranking Results</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title">Ranking Resumes</div>', unsafe_allow_html=True)
     resumes = []
     resume_keywords = {}
     
