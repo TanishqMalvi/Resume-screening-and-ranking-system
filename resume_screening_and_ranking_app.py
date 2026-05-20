@@ -8,9 +8,9 @@ import re
 from io import BytesIO
 
 # Function to set background
-def set_background(image_url):
+def set_background():
     st.markdown(
-        f"""
+        """
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
@@ -19,11 +19,8 @@ def set_background(image_url):
         }}
 
         .stApp {{
-            background: linear-gradient(145deg, rgba(9, 24, 48, 0.74), rgba(17, 43, 77, 0.67)),
-                        url({image_url});
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.22), transparent 42%),
+                        linear-gradient(145deg, rgba(9, 24, 48, 0.74), rgba(17, 43, 77, 0.67));
         }}
         .main .block-container {{
             max-width: 1050px;
@@ -169,7 +166,7 @@ def generate_download_link(df):
     return href
 
 # Set background
-set_background("https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1600")
+set_background()
 
 # Main Streamlit app
 st.markdown(
@@ -182,7 +179,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.sidebar.image("/home/runner/work/Resume-screening-and-ranking-system/Resume-screening-and-ranking-system/microsoft-logo.png", width=200)
+st.sidebar.image("microsoft-logo.png", width=200)
 st.sidebar.markdown("### Project Information")
 st.sidebar.info("This AI-powered tool screens resumes based on job descriptions using NLP and TF-IDF.")
 
