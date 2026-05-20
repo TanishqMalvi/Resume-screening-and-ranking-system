@@ -6,6 +6,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import base64
 import re
 from io import BytesIO
+from pathlib import Path
 
 # Function to set background
 def set_background():
@@ -179,7 +180,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.sidebar.image("microsoft-logo.png", width=200)
+st.sidebar.image(str(Path(__file__).resolve().parent / "microsoft-logo.png"), width=200)
 st.sidebar.markdown("### Project Information")
 st.sidebar.info("This AI-powered tool screens resumes based on job descriptions using NLP and TF-IDF.")
 
