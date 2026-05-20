@@ -8,6 +8,9 @@ import re
 from io import BytesIO
 from pathlib import Path
 
+SIDEBAR_LOGO_FILENAME = "microsoft-logo.png"
+SIDEBAR_LOGO_FALLBACK_TEXT = "Microsoft"
+
 # Function to set background
 def set_background():
     st.markdown(
@@ -190,11 +193,11 @@ st.markdown(
 )
 
 # Local logo expected in app directory; if missing, sidebar shows a text fallback.
-sidebar_logo = Path(__file__).resolve().parent / "microsoft-logo.png"
+sidebar_logo = Path(__file__).resolve().parent / SIDEBAR_LOGO_FILENAME
 if sidebar_logo.exists():
     st.sidebar.image(str(sidebar_logo), width=200)
 else:
-    st.sidebar.markdown("**Microsoft**")
+    st.sidebar.markdown(f"**{SIDEBAR_LOGO_FALLBACK_TEXT}**")
 st.sidebar.markdown("### Project Information")
 st.sidebar.info("This AI-powered tool screens resumes based on job descriptions using NLP and TF-IDF.")
 
