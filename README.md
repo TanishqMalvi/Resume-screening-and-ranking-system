@@ -18,9 +18,9 @@ This is an AI-powered Resume Screening & Candidate Ranking System that analyzes 
    cd Resume-screening-and-ranking-system
    ```
 
-2. (Optional) Checkout a specific branch:
+2. (Optional) Checkout a specific branch (for contributors):
    ```sh
-   git checkout copilot/modify-html-css-for-attractiveness
+   git checkout <branch-name>
    ```
 
 3. Install the required dependencies:
