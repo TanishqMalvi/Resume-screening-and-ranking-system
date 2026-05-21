@@ -14,11 +14,16 @@ This is an AI-powered Resume Screening & Candidate Ranking System that analyzes 
 
 1. Clone this repository:
    ```sh
-   git clone https://github.com/yourusername/ai-resume-screening.git
-   cd ai-resume-screening
+   git clone https://github.com/TanishqMalvi/Resume-screening-and-ranking-system.git
+   cd Resume-screening-and-ranking-system
    ```
 
-2. Install the required dependencies:
+2. (Optional) Checkout a specific branch:
+   ```sh
+   git checkout copilot/modify-html-css-for-attractiveness
+   ```
+
+3. Install the required dependencies:
    ```sh
    pip install -r requirements.txt
    ```
@@ -38,7 +43,7 @@ re
 
 Run the Streamlit application with the following command:
 ```sh
-streamlit run app.py
+streamlit run resume_screening_and_ranking_app.py
 ```
 
 ## Usage
